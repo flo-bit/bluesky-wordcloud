@@ -6,6 +6,4 @@ built with d3-cloud, svelte, tailwind.
 
 [live here](https://flo-bit.dev/bluesky-wordcloud/)
 
-
-https://github.com/user-attachments/assets/6c719571-db68-4148-8c75-b199063a63df
-
+<img width="1325" alt="wordcloud" src="https://github.com/user-attachments/assets/92296478-56de-4cc8-adb4-40195fef5bcd">
