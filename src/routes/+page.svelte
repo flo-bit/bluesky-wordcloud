@@ -8,7 +8,7 @@
 
 	let posts = 0;
 
-	let countdown = 10;
+	let countdown = 3;
 
 	let firstCountdown = true;
 
@@ -227,7 +227,10 @@
 
 		updateDimensions();
 
-		setInterval(updateWords, 10000);
+		setTimeout(() => {
+			updateWords();
+			setInterval(updateWords, 10000);
+		}, 3000);
 
 		let countdownInterval = setInterval(() => {
 			countdown--;
@@ -240,8 +243,17 @@
 
 		window.addEventListener('resize', updateDimensions);
 
+		function secondsToMicroseconds(seconds: number) {
+			return Math.floor(seconds * 1000000);
+		}
+
+		const startTime = Date.now() * 1000 - secondsToMicroseconds(10);
+		console.log(startTime);
+
+		// WebSocket URL from BlueSky
 		const url =
-			'wss://jetstream2.us-east.bsky.network/subscribe?wantedCollections=app.bsky.feed.post';
+			'wss://jetstream2.us-east.bsky.network/subscribe?wantedCollections=app.bsky.feed.post&cursor=' +
+			startTime;
 
 		// WebSocket logic
 		const ws = new WebSocket(url);
@@ -289,7 +301,6 @@
 	});
 
 	function updateWords() {
-		console.log('Updating words');
 		// get 200 most common words
 		const mostCommonWords = Array.from(wordCounts.entries())
 			.sort((a, b) => b[1] - a[1])
@@ -329,7 +340,13 @@
 <div
 	class="absolute left-0 top-0 flex w-full items-center justify-between px-4 py-2 text-sm font-semibold"
 >
-	<div>by <a href="https://flo-bit.dev/" class="hover:text-cyan-600 transition-colors duration-100" target="_blank">flo-bit</a></div>
+	<div>
+		by <a
+			href="https://flo-bit.dev/"
+			class="transition-colors duration-100 hover:text-cyan-600"
+			target="_blank">flo-bit</a
+		>
+	</div>
 
 	<div>
 		<a
