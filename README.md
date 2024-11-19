@@ -1,6 +1,6 @@
 # bluesky wordcloud
 
-> [!INFO]
+> [!NOTE]
 > moved to be part of https://github.com/flo-bit/bluesky-visualizers
 
 showing a wordcloud of all english bluesky posts in the last 10 seconds
